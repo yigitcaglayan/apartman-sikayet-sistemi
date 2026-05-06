@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Kayıt Ol{% endblock %}
+
+{% block header_title %}Yeni Kayıt{% endblock %}
+
+{% block content %}
+<div class="form-container" style="max-width: 400px; margin: 40px auto;">
+    <h2>Kayıt Ol</h2>
+    <form method="POST" action="{{ url_for('kayit') }}">
+        <label for="ad_soyad">Ad Soyad</label>
+        <input type="text" id="ad_soyad" name="ad_soyad" required>
+
+        <label for="email">E-posta</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="sifre">Şifre</label>
+        <input type="password" id="sifre" name="sifre" required>
+
+        <label for="daire_no">Daire No (Örn: A1, B5)</label>
+        <input type="text" id="daire_no" name="daire_no">
+
+        <label for="telefon">Telefon</label>
+        <input type="text" id="telefon" name="telefon">
+
+        <button type="submit">Kayıt Ol</button>
+    </form>
+    <p style="text-align: center; margin-top: 15px;">
+        Zaten bir hesabınız var mı? <a href="{{ url_for('giris') }}">Giriş Yapın</a>
+    </p>
+</div>
+{% endblock %}

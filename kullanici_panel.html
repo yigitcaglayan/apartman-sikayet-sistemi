@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Kullanıcı Paneli{% endblock %}
+
+{% block header_title %}Şikayetlerim{% endblock %}
+
+{% block content %}
+<div class="panel-content">
+    <h2>Şikayetlerim</h2>
+    <a href="{{ url_for('sikayet_olustur') }}" class="btn" style="width: auto; float: right; margin-bottom: 15px;">+ Yeni Şikayet Oluştur</a>
+    <div style="clear: both;"></div>
+    
+    {% if sikayetler %}
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Başlık</th>
+                <th>Kategori</th>
+                <th>Durum</th>
+                <th>Öncelik</th>
+                <th>Oluşturma Tarihi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sikayet in sikayetler %}
+            <tr>
+                <td>{{ sikayet.id }}</td>
+                <td>{{ sikayet.baslik }}</td>
+                <td>{{ sikayet.kategori }}</td>
+                <td>
+                    <span style="font-weight: bold; color: 
+                    {% if sikayet.durum == 'Beklemede' %}orange
+                    {% elif sikayet.durum == 'İşleniyor' %}blue
+                    {% else %}green
+                    {% endif %};">
+                        {{ sikayet.durum }}
+                    </span>
+                </td>
+                <td>{{ sikayet.oncelik }}</td>
+                <td>{{ sikayet.olusturma_tarihi }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p style="text-align: center; padding: 20px; border: 1px dashed #ccc;">Henüz oluşturulmuş bir şikayetiniz bulunmamaktadır.</p>
+    {% endif %}
+
+</div>
+{% endblock %}

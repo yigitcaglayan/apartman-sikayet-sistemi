@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Şikayet Oluştur{% endblock %}
+
+{% block header_title %}Yeni Şikayetinizi Girin{% endblock %}
+
+{% block content %}
+<div class="form-container" style="max-width: 600px; margin: 40px auto;">
+    <h2>Şikayet Oluştur</h2>
+    <form method="POST" action="{{ url_for('sikayet_olustur') }}">
+        <label for="baslik">Başlık</label>
+        <input type="text" id="baslik" name="baslik" required>
+
+        <label for="kategori">Kategori</label>
+        <select id="kategori" name="kategori" required>
+            <option value="Ortak Alanlar">Ortak Alanlar</option>
+            <option value="Yönetim">Yönetim</option>
+            <option value="Onarım/Bakım">Onarım/Bakım</option>
+            <option value="Gürültü/Komşu">Gürültü/Komşu</option>
+            <option value="Diğer">Diğer</option>
+        </select>
+
+        <label for="aciklama">Açıklama</label>
+        <textarea id="aciklama" name="aciklama" rows="5" required></textarea>
+
+        <label for="oncelik">Öncelik</label>
+        <select id="oncelik" name="oncelik">
+            <option value="Düşük">Düşük</option>
+            <option value="Orta" selected>Orta</option>
+            <option value="Yüksek">Yüksek</option>
+            <option value="Acil">Acil</option>
+        </select>
+
+        <button type="submit">Şikayeti Kaydet</button>
+        <a href="{{ url_for('kullanici_panel') }}" class="btn btn-danger" style="width: 100%; margin-top: 10px;">İptal</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Şikayet Detayı - #{{ sikayet.id }}{% endblock %}
+
+{% block header_title %}Şikayet Detayı ve Güncelleme{% endblock %}
+
+{% block content %}
+<div class="form-container" style="max-width: 800px; margin: 40px auto;">
+    <h2>Şikayet Detayı - #{{ sikayet.id }}</h2>
+    
+    <div style="border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 5px;">
+        <h3>Şikayet Bilgileri</h3>
+        <p><strong>Başlık:</strong> {{ sikayet.baslik }}</p>
+        <p><strong>Kategori:</strong> {{ sikayet.kategori }}</p>
+        <p><strong>Açıklama:</strong> <br> {{ sikayet.aciklama }}</p>
+        <p><strong>Öncelik:</strong> {{ sikayet.oncelik }}</p>
+        <p><strong>Oluşturma Tarihi:</strong> {{ sikayet.olusturma_tarihi }}</p>
+        <p><strong>Son Güncelleme:</strong> {{ sikayet.guncelleme_tarihi }}</p>
+    </div>
+
+    <div style="border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 5px; background: #f9f9f9;">
+        <h3>Kullanıcı Bilgileri</h3>
+        <p><strong>Ad Soyad:</strong> {{ sikayet.ad_soyad }}</p>
+        <p><strong>Daire No:</strong> {{ sikayet.daire_no }}</p>
+        <p><strong>E-posta:</strong> {{ sikayet.email }}</p>
+        <p><strong>Telefon:</strong> {{ sikayet.telefon }}</p>
+    </div>
+
+    <h3>Şikayeti Güncelle</h3>
+    <form method="POST" action="{{ url_for('admin_sikayet_detay', id=sikayet.id) }}">
+        <label for="durum">Şikayet Durumu</label>
+        <select id="durum" name="durum">
+            <option value="Beklemede" {% if sikayet.durum == 'Beklemede' %}selected{% endif %}>Beklemede</option>
+            <option value="İşleniyor" {% if sikayet.durum == 'İşleniyor' %}selected{% endif %}>İşleniyor</option>
+            <option value="Çözüldü" {% if sikayet.durum == 'Çözüldü' %}selected{% endif %}>Çözüldü</option>
+            <option value="İptal Edildi" {% if sikayet.durum == 'İptal Edildi' %}selected{% endif %}>İptal Edildi</option>
+        </select>
+
+        <label for="admin_notu">Yönetici Notu</label>
+        <textarea id="admin_notu" name="admin_notu" rows="5">{{ sikayet.admin_notu or '' }}</textarea>
+
+        <button type="submit">Güncelle ve Kaydet</button>
+        <a href="{{ url_for('admin_panel') }}" class="btn btn-danger" style="width: 100%; margin-top: 10px;">Admin Paneline Dön</a>
+    </form>
+</div>
+{% endblock %}

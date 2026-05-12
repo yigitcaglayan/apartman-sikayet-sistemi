@@ -2,6 +2,17 @@
 
 Bu uygulama, apartman sakinlerinin şikayetlerini dijital ortamda yönetime iletebilmesi ve yöneticilerin bu süreci takip edebilmesi için geliştirilmiştir.
 
+🖼️ Ekran Görüntüleri
+
+Aşağıda sistemin arayüzüne dair ekran görüntüleri yer almaktadır:
+
+![Sistem Ekran Görüntüsü](giris_panel.png)
+![Sistem Ekran Görüntüsü](sikayet_panel.png)
+![Sistem Ekran Görüntüsü](admin_panel.png)
+
+
+
+
 🚀Özellikler
 
 Kullanıcı Paneli: Şikayet oluşturma ve durum takibi.
